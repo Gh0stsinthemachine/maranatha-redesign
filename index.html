@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maranatha Church · Jacksonville, FL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:      #1a1d26;
+      --ink-mid:  #2e3247;
+      --gold:     #c9a84c;
+      --gold-lt:  #e8c97a;
+      --cream:    #f6f1e9;
+      --warm-wht: #fdfaf5;
+      --mist:     #8a8fa8;
+      --border:   rgba(201,168,76,0.18);
+      --radius:   4px;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--warm-wht);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── UTILITY ─── */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+    .gold { color: var(--gold); }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26,29,38,0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      height: 68px;
+      display: flex; align-items: center;
+    }
+    .nav-inner {
+      width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.1rem; font-weight: 700;
+      color: #fff; text-decoration: none; letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links {
+      display: flex; gap: 32px; list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.72);
+      text-decoration: none; font-size: 0.85rem;
+      font-weight: 500; letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold-lt); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--ink) !important;
+      padding: 8px 20px;
+      border-radius: var(--radius);
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-lt) !important; color: var(--ink) !important; }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: #fff; border-radius: 2px;
+      transition: all 0.25s;
+    }
+    .mobile-menu {
+      display: none; position: fixed;
+      top: 68px; left: 0; right: 0; bottom: 0;
+      background: var(--ink);
+      z-index: 99;
+      flex-direction: column;
+      padding: 32px 24px;
+      gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none; font-size: 1.1rem;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-weight: 500;
+    }
+    .mobile-menu a:last-child { border: none; }
+    .mobile-menu a.cta-link {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #0f1119 0%, #1a1d26 40%, #22263a 100%);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding-top: 68px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 75% 50%, rgba(201,168,76,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(80,100,180,0.06) 0%, transparent 70%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; opacity: 0.03;
+      background-image:
+        linear-gradient(rgba(201,168,76,1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,1) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      max-width: 760px;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      color: var(--gold); font-size: 0.78rem;
+      font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 32px; height: 1px;
+      background: var(--gold);
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      font-weight: 700; line-height: 1.08;
+      color: #fff; margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+    h1 em { font-style: italic; color: var(--gold-lt); }
+    .hero-sub {
+      font-size: 1.1rem; color: rgba(255,255,255,0.6);
+      max-width: 520px; margin-bottom: 44px;
+      font-weight: 300; line-height: 1.75;
+    }
+    .hero-actions {
+      display: flex; gap: 16px; flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--ink);
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: var(--radius);
+      font-weight: 600; font-size: 0.92rem;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      padding: 13px 32px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.2);
+      font-weight: 500; font-size: 0.92rem;
+      letter-spacing: 0.03em;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
+    .hero-service-strip {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: rgba(255,255,255,0.04);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(8px);
+    }
+    .service-strip-inner {
+      max-width: 1140px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 0;
+    }
+    .strip-item {
+      flex: 1; text-align: center;
+      padding: 20px 16px;
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+    .strip-item:last-child { border-right: none; }
+    .strip-label {
+      font-size: 0.7rem; color: var(--mist);
+      text-transform: uppercase; letter-spacing: 0.1em;
+      font-weight: 600; margin-bottom: 4px;
+    }
+    .strip-value {
+      font-family: var(--font-display);
+      font-size: 1.05rem; color: #fff; font-weight: 600;
+    }
+    .strip-sub {
+      font-size: 0.75rem; color: rgba(255,255,255,0.4);
+      margin-top: 2px;
+    }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 96px 0; }
+    .section-dark { background: var(--ink); }
+    .section-cream { background: var(--cream); }
+    .section-mid { background: var(--ink-mid); }
+
+    .section-label {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::after {
+      content: ''; flex: 1; max-width: 40px; height: 1px;
+      background: var(--gold); display: block;
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700; line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+    h2.light { color: #fff; }
+    h2.dark { color: var(--ink); }
+    .lead {
+      font-size: 1.05rem; line-height: 1.8;
+      color: var(--mist); max-width: 580px;
+      margin-top: 16px;
+    }
+    .lead.light { color: rgba(255,255,255,0.55); }
+
+    /* ─── WELCOME ─── */
+    .welcome-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .welcome-img-block {
+      position: relative;
+    }
+    .welcome-img-placeholder {
+      width: 100%; aspect-ratio: 4/5;
+      background: linear-gradient(135deg, var(--ink-mid) 0%, #1e2235 100%);
+      border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .welcome-img-placeholder::after {
+      content: '✝';
+      font-size: 5rem; opacity: 0.08; color: var(--gold);
+    }
+    .welcome-accent-box {
+      position: absolute; bottom: -24px; right: -24px;
+      background: var(--gold);
+      padding: 24px 28px;
+      border-radius: 2px;
+    }
+    .welcome-accent-box .num {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 700;
+      color: var(--ink); line-height: 1;
+    }
+    .welcome-accent-box .txt {
+      font-size: 0.75rem; font-weight: 600;
+      color: rgba(26,29,38,0.7); text-transform: uppercase;
+      letter-spacing: 0.06em; margin-top: 4px;
+    }
+    .welcome-content blockquote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.25rem; color: rgba(255,255,255,0.85);
+      border-left: 3px solid var(--gold);
+      padding-left: 20px; margin: 32px 0;
+      line-height: 1.55;
+    }
+    .welcome-content blockquote cite {
+      display: block; margin-top: 10px;
+      font-size: 0.8rem; color: var(--mist);
+      font-style: normal; letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .welcome-tags {
+      display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px;
+    }
+    .tag {
+      padding: 6px 16px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.78rem; color: rgba(255,255,255,0.55);
+      font-weight: 500; letter-spacing: 0.03em;
+    }
+
+    /* ─── SERVICES ─── */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 2px; margin-top: 60px;
+    }
+    .service-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      padding: 40px 32px;
+      transition: background 0.2s;
+      position: relative;
+    }
+    .service-card:hover { background: rgba(255,255,255,0.06); }
+    .service-icon {
+      width: 48px; height: 48px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 24px;
+      background: rgba(201,168,76,0.06);
+    }
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem; font-weight: 600;
+      color: #fff; margin-bottom: 10px;
+    }
+    .service-card p {
+      font-size: 0.9rem; color: rgba(255,255,255,0.48);
+      line-height: 1.7;
+    }
+    .service-time {
+      display: inline-flex; align-items: center;
+      gap: 6px; margin-top: 20px;
+      font-size: 0.8rem; color: var(--gold);
+      font-weight: 600; letter-spacing: 0.04em;
+    }
+    .service-time::before {
+      content: ''; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ─── PROGRAMS ─── */
+    .programs-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; margin-bottom: 56px;
+      gap: 32px;
+    }
+    .programs-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 24px;
+    }
+    .program-card {
+      background: var(--warm-wht);
+      border: 1px solid rgba(26,29,38,0.08);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .program-card:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+      transform: translateY(-3px);
+    }
+    .program-badge {
+      display: inline-block;
+      background: var(--cream);
+      border: 1px solid rgba(26,29,38,0.1);
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--ink); margin-bottom: 20px;
+    }
+    .program-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--ink); margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .program-card p {
+      font-size: 0.88rem; color: #555;
+      line-height: 1.72;
+    }
+    .program-detail {
+      margin-top: 24px; padding-top: 20px;
+      border-top: 1px solid rgba(26,29,38,0.08);
+      font-size: 0.8rem; color: #888; font-weight: 500;
+    }
+    .program-detail strong { color: var(--ink); }
+
+    /* ─── EVERYDAY ─── */
+    .everyday-wrap {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .everyday-visual {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .everyday-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+    }
+    .everyday-card:first-child {
+      grid-column: span 2;
+      background: rgba(201,168,76,0.08);
+    }
+    .everyday-card .ec-label {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 10px;
+    }
+    .everyday-card .ec-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem; color: #fff;
+      font-weight: 600; line-height: 1.3;
+    }
+    .everyday-card .ec-body {
+      font-size: 0.82rem; color: rgba(255,255,255,0.45);
+      margin-top: 8px; line-height: 1.65;
+    }
+    .everyday-cta { margin-top: 36px; }
+    .soap-steps {
+      display: grid; grid-template-columns: repeat(2,1fr);
+      gap: 16px; margin-top: 32px;
+    }
+    .soap-step {
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .soap-letter {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: var(--gold);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700; font-size: 1.1rem;
+      color: var(--ink);
+    }
+    .soap-text h4 {
+      font-size: 0.85rem; font-weight: 600;
+      color: #fff; margin-bottom: 3px;
+    }
+    .soap-text p {
+      font-size: 0.78rem; color: rgba(255,255,255,0.4);
+    }
+
+    /* ─── RESOURCES ─── */
+    .resources-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 24px; margin-top: 56px;
+    }
+    .resource-card {
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      position: relative; overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .resource-card:hover { transform: translateY(-2px); }
+    .resource-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: var(--gold);
+    }
+    .resource-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--ink); margin-bottom: 10px;
+    }
+    .resource-card p {
+      font-size: 0.88rem; color: #666;
+      line-height: 1.7;
+    }
+    .resource-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 20px; font-size: 0.82rem;
+      font-weight: 600; color: var(--ink);
+      text-decoration: none; letter-spacing: 0.02em;
+      transition: gap 0.2s;
+    }
+    .resource-link:hover { gap: 10px; }
+    .resource-link::after { content: '→'; }
+    .resource-platforms {
+      display: flex; gap: 8px; margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .platform-badge {
+      padding: 4px 12px;
+      background: var(--ink);
+      border-radius: 100px;
+      font-size: 0.7rem; font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── COMMUNITY ─── */
+    .community-banner {
+      background: var(--gold);
+      border-radius: var(--radius);
+      padding: 56px 60px;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 40px;
+      position: relative; overflow: hidden;
+    }
+    .community-banner::before {
+      content: '♥';
+      position: absolute; right: 40px; top: 50%;
+      transform: translateY(-50%);
+      font-size: 8rem; opacity: 0.08;
+      color: var(--ink);
+      pointer-events: none;
+    }
+    .community-banner h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: var(--ink); font-weight: 700;
+      max-width: 480px;
+    }
+    .community-banner p {
+      color: rgba(26,29,38,0.65); margin-top: 10px;
+      font-size: 0.95rem;
+    }
+    .btn-dark {
+      background: var(--ink);
+      color: #fff; text-decoration: none;
+      padding: 14px 32px;
+      border-radius: var(--radius);
+      font-weight: 600; font-size: 0.9rem;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block; flex-shrink: 0;
+    }
+    .btn-dark:hover { background: var(--ink-mid); transform: translateY(-1px); }
+
+    /* ─── GIVE ─── */
+    .give-wrap {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .give-content h2 { color: var(--ink); }
+    .give-content .lead { color: #666; }
+    .give-verse {
+      margin: 32px 0;
+      padding: 24px 28px;
+      background: var(--cream);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .give-verse p {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.05rem; color: var(--ink);
+      line-height: 1.6;
+    }
+    .give-verse cite {
+      display: block; margin-top: 8px;
+      font-size: 0.78rem; color: var(--mist);
+      font-style: normal; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .give-options {
+      display: grid; gap: 16px; margin-top: 36px;
+    }
+    .give-option {
+      background: var(--warm-wht);
+      border: 1px solid rgba(26,29,38,0.1);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 16px;
+    }
+    .give-option-info h4 {
+      font-size: 0.92rem; font-weight: 600; color: var(--ink);
+    }
+    .give-option-info p {
+      font-size: 0.8rem; color: #888; margin-top: 2px;
+    }
+    .give-option a {
+      font-size: 0.8rem; font-weight: 600;
+      color: var(--gold); text-decoration: none;
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+    .give-option a:hover { color: var(--ink); }
+
+    /* ─── CONTACT ─── */
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+    .contact-form-side {}
+    .contact-info-side {}
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block; font-size: 0.78rem;
+      font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: rgba(255,255,255,0.5);
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      color: #fff; font-family: var(--font-body);
+      font-size: 0.92rem;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--gold);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-group select option { background: var(--ink-mid); }
+    .contact-submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--ink);
+      border: none; border-radius: var(--radius);
+      padding: 14px;
+      font-size: 0.92rem; font-weight: 700;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .contact-submit:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .info-block { margin-bottom: 32px; }
+    .info-block h4 {
+      font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--gold); margin-bottom: 10px;
+    }
+    .info-block p {
+      font-size: 0.92rem; color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+    .info-block a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .info-block a:hover { color: var(--gold); }
+    .social-links {
+      display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px;
+    }
+    .social-link {
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.78rem; color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .social-link:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #0d0f16;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 56px 0 32px;
+    }
+    .footer-inner {
+      max-width: 1140px; margin: 0 auto; padding: 0 24px;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; margin-bottom: 48px;
+    }
+    .footer-brand h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem; color: #fff; font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .footer-brand h3 span { color: var(--gold); }
+    .footer-brand p {
+      font-size: 0.85rem; color: rgba(255,255,255,0.35);
+      line-height: 1.7; max-width: 240px;
+    }
+    .footer-col h4 {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul a {
+      font-size: 0.85rem; color: rgba(255,255,255,0.38);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: rgba(255,255,255,0.8); }
+    .footer-bottom {
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px;
+    }
+    .footer-bottom p {
+      font-size: 0.78rem; color: rgba(255,255,255,0.2);
+    }
+    .footer-address {
+      font-size: 0.78rem; color: rgba(255,255,255,0.25);
+      text-align: right;
+    }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .welcome-grid,
+      .everyday-wrap,
+      .give-wrap,
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .services-grid,
+      .programs-grid,
+      .resources-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .community-banner { flex-direction: column; padding: 40px 32px; }
+      .community-banner::before { display: none; }
+      .programs-header { flex-direction: column; align-items: flex-start; }
+      .service-strip-inner { flex-direction: column; gap: 0; }
+      .strip-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+      .strip-item:last-child { border-bottom: none; }
+      .welcome-accent-box { position: static; margin-top: 16px; display: inline-block; }
+      .soap-steps { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-address { text-align: center; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 64px 0; }
+      h1 { font-size: 2.4rem; }
+      h2 { font-size: 1.8rem; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAVIGATION ─── -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="#home">Maranatha <span>·</span> JAX</a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#community">Community</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#give" class="nav-cta">Give</a></li>
+      </ul>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ─── MOBILE MENU ─── -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="closeMobile()">Services</a>
+    <a href="#programs" onclick="closeMobile()">Programs</a>
+    <a href="#resources" onclick="closeMobile()">Resources</a>
+    <a href="#community" onclick="closeMobile()">Community</a>
+    <a href="#contact" onclick="closeMobile()">Contact</a>
+    <a href="#give" class="cta-link" onclick="closeMobile()">Give Online →</a>
+  </div>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero" id="home">
+    <div class="hero-grid"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-eyebrow">Southwest Jacksonville · Est. 2004</div>
+        <h1>It's All<br />About <em>Jesus.</em></h1>
+        <p class="hero-sub">A non-denominational community rooted in Scripture, relationship, and everyday faith. Whatever your story, there's a seat for you on Sunday.</p>
+        <div class="hero-actions">
+          <a href="#services" class="btn-primary">Plan Your Visit</a>
+          <a href="#resources" class="btn-ghost">Listen to a Sermon</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-service-strip">
+      <div class="service-strip-inner">
+        <div class="strip-item">
+          <div class="strip-label">Sunday Worship</div>
+          <div class="strip-value">10:00 AM</div>
+          <div class="strip-sub">In-person &amp; Live Stream</div>
+        </div>
+        <div class="strip-item">
+          <div class="strip-label">Youth Night</div>
+          <div class="strip-value">6:00 PM Sunday</div>
+          <div class="strip-sub">Grades 7–12 · The Garage</div>
+        </div>
+        <div class="strip-item">
+          <div class="strip-label">Location</div>
+          <div class="strip-value">7550 Collins Rd</div>
+          <div class="strip-sub">Jacksonville, FL 32244</div>
+        </div>
+        <div class="strip-item">
+          <div class="strip-label">Daily Devotional</div>
+          <div class="strip-value">The Everyday</div>
+          <div class="strip-sub">Text · Email · Scripture · Prayer</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WELCOME ─── -->
+  <section class="section-dark" id="about">
+    <div class="container">
+      <div class="welcome-grid">
+        <div class="welcome-img-block reveal">
+          <div class="welcome-img-placeholder"></div>
+          <div class="welcome-accent-box">
+            <div class="num">20+</div>
+            <div class="txt">Years of Community</div>
+          </div>
+        </div>
+        <div class="welcome-content reveal reveal-delay-1">
+          <div class="section-label">Who We Are</div>
+          <h2 class="light">Casual clothes.<br />Real conversations.<br />Deep roots.</h2>
+          <blockquote>
+            "We loved you so much that we were delighted to share with you not only the gospel of God but our lives as well."
+            <cite>— 1 Thessalonians 2:8</cite>
+          </blockquote>
+          <p class="lead light">We're a non-denominational church that believes Sunday morning is just the beginning. Faith grows in community — in kitchens, on phones, in small groups, and in the everyday rhythms of life. Come as you are.</p>
+          <div class="welcome-tags">
+            <span class="tag">Modern Worship</span>
+            <span class="tag">Verse-by-Verse Teaching</span>
+            <span class="tag">All Are Welcome</span>
+            <span class="tag">Kids Programs</span>
+            <span class="tag">Casual Dress</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SERVICES ─── -->
+  <section id="services" style="background:#13151e; padding: 96px 0;">
+    <div class="container">
+      <div class="section-label reveal">Gather With Us</div>
+      <h2 class="light reveal reveal-delay-1">Every week,<br />something for everyone.</h2>
+      <div class="services-grid reveal reveal-delay-2">
+        <div class="service-card">
+          <div class="service-icon">🙏</div>
+          <h3>Sunday Worship</h3>
+          <p>Live music, prayer, and verse-by-verse teaching in an environment that's relaxed, genuine, and centered on Scripture.</p>
+          <div class="service-time">Every Sunday · 10:00 AM</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📺</div>
+          <h3>Live Stream</h3>
+          <p>Can't make it in person? Watch every Sunday service live on YouTube — and access past sermons any time you need them.</p>
+          <div class="service-time">YouTube · 10:00 AM Sundays</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔥</div>
+          <h3>Form &amp; Fire</h3>
+          <p>Our summer book club focused on spiritual formation — reading together, discussing deeply, growing together through July and August.</p>
+          <div class="service-time">Summer · Seasonal</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROGRAMS ─── -->
+  <section class="section-cream" id="programs">
+    <div class="container">
+      <div class="programs-header">
+        <div>
+          <div class="section-label reveal">Age-Specific Programs</div>
+          <h2 class="dark reveal reveal-delay-1">Faith at every<br />stage of life.</h2>
+        </div>
+        <p class="lead reveal reveal-delay-2" style="max-width:340px; color:#666;">From infant care to young adulthood, Maranatha walks alongside you and your family wherever you are.</p>
+      </div>
+      <div class="programs-grid">
+        <div class="program-card reveal">
+          <div class="program-badge">Youngest</div>
+          <h3>Maranatha Kids · Nursery</h3>
+          <p>Safe, loving childcare for your littlest ones so you can fully engage in the Sunday service. Staffed by trained, caring volunteers.</p>
+          <div class="program-detail"><strong>Ages:</strong> 6 months – 3 years<br /><strong>When:</strong> During Sunday service</div>
+        </div>
+        <div class="program-card reveal reveal-delay-1">
+          <div class="program-badge">Kids</div>
+          <h3>Maranatha Kids · Classes</h3>
+          <p>Age-appropriate biblical teaching for school-age kids during the Sunday sermon. Fun, engaging, and grounded in Scripture.</p>
+          <div class="program-detail"><strong>Ages:</strong> 4 years – 6th grade<br /><strong>When:</strong> During Sunday service</div>
+        </div>
+        <div class="program-card reveal reveal-delay-2">
+          <div class="program-badge">Youth</div>
+          <h3>Youth Group</h3>
+          <p>A dedicated Sunday evening gathering for middle and high schoolers in The Garage — a space that's theirs to explore faith, ask questions, and build community.</p>
+          <div class="program-detail"><strong>Grades:</strong> 7th – 12th<br /><strong>When:</strong> Sunday · 6:00 PM</div>
+        </div>
+        <div class="program-card reveal" style="grid-column: span 3;">
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
+            <div>
+              <div class="program-badge">Young Adults</div>
+              <h3>Young Adults Community</h3>
+              <p>A tight-knit community for those navigating the twenties — from college to career, singleness to marriage. Real relationships, real growth.</p>
+              <div class="program-detail"><strong>Ages:</strong> 18 – 29 · <strong>Contact the church</strong> for schedule</div>
+            </div>
+            <div style="background: var(--cream); border-radius: 2px; padding: 28px; border: 1px solid rgba(26,29,38,0.06);">
+              <p style="font-family: var(--font-display); font-style:italic; font-size:1.1rem; color: var(--ink); line-height:1.5; margin-bottom: 12px;">"We're not just doing church. We're doing life together."</p>
+              <p style="font-size: 0.78rem; color: #999; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600;">Maranatha Community</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── THE EVERYDAY ─── -->
+  <section class="section-dark" id="everyday">
+    <div class="container">
+      <div class="everyday-wrap">
+        <div class="everyday-text reveal">
+          <div class="section-label">Daily Discipleship</div>
+          <h2 class="light">The Everyday —<br />faith beyond Sunday.</h2>
+          <p class="lead light" style="margin-top: 16px;">Sign up for a daily text or email with Scripture, prayer, and a short devotional. Because discipleship happens in the in-between moments, not just the pews.</p>
+
+          <div class="soap-steps">
+            <div class="soap-step">
+              <div class="soap-letter">S</div>
+              <div class="soap-text">
+                <h4>Scripture</h4>
+                <p>Read the passage</p>
+              </div>
+            </div>
+            <div class="soap-step">
+              <div class="soap-letter">O</div>
+              <div class="soap-text">
+                <h4>Observation</h4>
+                <p>What do you notice?</p>
+              </div>
+            </div>
+            <div class="soap-step">
+              <div class="soap-letter">A</div>
+              <div class="soap-text">
+                <h4>Application</h4>
+                <p>How does it apply?</p>
+              </div>
+            </div>
+            <div class="soap-step">
+              <div class="soap-letter">P</div>
+              <div class="soap-text">
+                <h4>Prayer</h4>
+                <p>Respond to God</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="everyday-cta">
+            <a href="#contact" class="btn-primary">Sign Up for The Everyday</a>
+          </div>
+        </div>
+        <div class="everyday-visual reveal reveal-delay-1">
+          <div class="everyday-card">
+            <div class="ec-label">Today's Reading</div>
+            <div class="ec-title">Acts: The Story of the Early Church</div>
+            <div class="ec-body">Following the Holy Spirit into unexpected places. The Bible Project series + Tim Keller's teaching series available in our resources section.</div>
+          </div>
+          <div class="everyday-card">
+            <div class="ec-label">6-Month Plan</div>
+            <div class="ec-title">Structured Reading</div>
+            <div class="ec-body">A guided plan to move through Scripture with intention.</div>
+          </div>
+          <div class="everyday-card">
+            <div class="ec-label">1-Year Plan</div>
+            <div class="ec-title">Full Bible</div>
+            <div class="ec-body">The full biblical arc from Genesis to Revelation.</div>
+          </div>
+          <div class="everyday-card" style="grid-column: span 2; background: rgba(255,255,255,0.04);">
+            <div class="ec-label">Discussion</div>
+            <div class="ec-title">Sermon Discussion Templates</div>
+            <div class="ec-body">Take Sunday's sermon into your week. Use our printable discussion guide with your small group, family, or a friend over coffee.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── RESOURCES ─── -->
+  <section class="section-cream" id="resources">
+    <div class="container">
+      <div class="section-label reveal">Learn &amp; Grow</div>
+      <h2 class="dark reveal reveal-delay-1">Resources for<br />the whole week.</h2>
+      <div class="resources-grid">
+        <div class="resource-card reveal">
+          <h3>Podcast</h3>
+          <p>Every Sunday message available on-demand. Listen on your commute, at the gym, or during the dishes. The Word travels with you.</p>
+          <div class="resource-platforms">
+            <span class="platform-badge">Spotify</span>
+            <span class="platform-badge">Apple Podcasts</span>
+            <span class="platform-badge">YouTube</span>
+            <span class="platform-badge">SoundCloud</span>
+          </div>
+          <a href="#" class="resource-link" style="margin-top: 20px;">Listen Now</a>
+        </div>
+        <div class="resource-card reveal reveal-delay-1">
+          <h3>Recommended Reading</h3>
+          <p>A curated library of books from trusted scholars — Scot McKnight, Fleming Rutledge, Craig Keener, and more. Real theology, readable prose.</p>
+          <a href="#" class="resource-link">Browse the List</a>
+        </div>
+        <div class="resource-card reveal reveal-delay-2">
+          <h3>Bible Study Videos</h3>
+          <p>The Bible Project's visual guides to Scripture — currently working through Acts. Free, beautifully made, and deeply faithful to the text.</p>
+          <a href="#" class="resource-link">Watch on YouTube</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── COMMUNITY / FOOD DRIVE ─── -->
+  <section id="community" style="padding: 96px 0; background: var(--warm-wht);">
+    <div class="container">
+      <div class="community-banner reveal">
+        <div>
+          <h2>Serving Jacksonville,<br />one third Saturday at a time.</h2>
+          <p>We partner with Builders of the Faith for a monthly food drive — every third Saturday. Bring what you can, come as you are.</p>
+          <a href="#contact" class="btn-dark" style="margin-top: 24px; display: inline-block;">Get Involved</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── GIVE ─── -->
+  <section class="section-cream" id="give">
+    <div class="container">
+      <div class="give-wrap">
+        <div class="give-content reveal">
+          <div class="section-label">Generosity</div>
+          <h2 class="dark">Your giving<br />moves things forward.</h2>
+          <p class="lead">Every gift directly supports our community programs, Sunday services, food drives, and outreach — right here in southwest Jacksonville.</p>
+          <div class="give-verse">
+            <p>"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."</p>
+            <cite>2 Corinthians 9:7</cite>
+          </div>
+          <a href="#" class="btn-primary">Give Online via ChurchCenter</a>
+        </div>
+        <div class="give-options reveal reveal-delay-1">
+          <div class="give-option">
+            <div class="give-option-info">
+              <h4>Online Giving</h4>
+              <p>Secure, one-time or recurring through ChurchCenter</p>
+            </div>
+            <a href="#">Give Now →</a>
+          </div>
+          <div class="give-option">
+            <div class="give-option-info">
+              <h4>In-Person</h4>
+              <p>Offering received during Sunday service</p>
+            </div>
+            <a href="#services">Service Times →</a>
+          </div>
+          <div class="give-option">
+            <div class="give-option-info">
+              <h4>Text to Give</h4>
+              <p>Sign up for text updates &amp; giving access</p>
+            </div>
+            <a href="#contact">Sign Up →</a>
+          </div>
+          <div class="give-option" style="background: #fff8e8; border-color: rgba(201,168,76,0.25);">
+            <div class="give-option-info">
+              <h4>Food Drive Donation</h4>
+              <p>Bring non-perishables every 3rd Saturday</p>
+            </div>
+            <a href="#community">Learn More →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ─── -->
+  <section class="section-dark" id="contact">
+    <div class="container">
+      <div class="section-label reveal">Get In Touch</div>
+      <h2 class="light reveal reveal-delay-1" style="margin-bottom: 56px;">We'd love to hear from you.</h2>
+      <div class="contact-grid">
+        <div class="contact-form-side reveal">
+          <form onsubmit="handleSubmit(event)">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" placeholder="Jane Smith" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" placeholder="jane@example.com" required />
+            </div>
+            <div class="form-group">
+              <label for="reason">I'm reaching out about…</label>
+              <select id="reason">
+                <option value="">Select one</option>
+                <option>Planning a visit</option>
+                <option>Kids / Youth programs</option>
+                <option>The Everyday sign-up</option>
+                <option>Prayer request</option>
+                <option>Volunteering</option>
+                <option>Food drive</option>
+                <option>Something else</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" placeholder="Tell us what's on your mind…"></textarea>
+            </div>
+            <button type="submit" class="contact-submit">Send Message →</button>
+          </form>
+        </div>
+        <div class="contact-info-side reveal reveal-delay-1">
+          <div class="info-block">
+            <h4>Address</h4>
+            <p>7550 Collins Road<br />Jacksonville, FL 32244</p>
+          </div>
+          <div class="info-block">
+            <h4>Sunday Schedule</h4>
+            <p>Morning Worship · 10:00 AM<br />Youth (Grades 7–12) · 6:00 PM</p>
+          </div>
+          <div class="info-block">
+            <h4>Stay Connected</h4>
+            <p>Sign up for daily Scripture &amp; prayer via text or email through Flocknote — or follow along on social media.</p>
+            <div class="social-links">
+              <a href="#" class="social-link">Instagram</a>
+              <a href="#" class="social-link">YouTube</a>
+              <a href="#" class="social-link">Facebook</a>
+              <a href="#" class="social-link">Spotify</a>
+            </div>
+          </div>
+          <div class="info-block">
+            <h4>Ask a Question</h4>
+            <p>Nothing is too big or too small. Submit your prayer requests and questions — someone will respond personally.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>Maranatha <span>·</span> JAX</h3>
+          <p>A non-denominational community in southwest Jacksonville, Florida. It's all about Jesus.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Gather</h4>
+          <ul>
+            <li><a href="#services">Sunday Worship</a></li>
+            <li><a href="#services">Live Stream</a></li>
+            <li><a href="#programs">Youth Group</a></li>
+            <li><a href="#programs">Young Adults</a></li>
+            <li><a href="#services">Form &amp; Fire</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Grow</h4>
+          <ul>
+            <li><a href="#everyday">The Everyday</a></li>
+            <li><a href="#resources">Podcast</a></li>
+            <li><a href="#resources">Reading List</a></li>
+            <li><a href="#resources">Bible Videos</a></li>
+            <li><a href="#everyday">S.O.A.P. Method</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#community">Food Drive</a></li>
+            <li><a href="#give">Give Online</a></li>
+            <li><a href="#contact">Prayer Requests</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#contact">Text &amp; Email Updates</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Maranatha Church of Jacksonville. All rights reserved.</p>
+        <div class="footer-address">7550 Collins Road · Jacksonville, FL 32244</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    function closeMobile() {
+      mobileMenu.classList.remove('open');
+    }
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Form submit
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.contact-submit');
+      btn.textContent = 'Message Sent ✓';
+      btn.style.background = '#2FA878';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = 'Send Message →';
+        btn.style.background = '';
+        btn.disabled = false;
+        e.target.reset();
+      }, 3000);
+    }
+
+    // Active nav highlight on scroll
+    const sections = document.querySelectorAll('section[id], footer');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const scrollSpy = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = e.target.id;
+          navLinks.forEach(a => {
+            a.style.color = a.getAttribute('href') === `#${id}`
+              ? 'rgba(255,255,255,0.95)' : '';
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => scrollSpy.observe(s));
+  </script>
+</body>
+</html>
