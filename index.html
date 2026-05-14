@@ -260,17 +260,16 @@
     .welcome-img-block {
       position: relative;
     }
-    .welcome-img-placeholder {
+    .welcome-img-real {
       width: 100%; aspect-ratio: 4/5;
-      background: linear-gradient(135deg, var(--ink-mid) 0%, #1e2235 100%);
       border-radius: 2px;
-      display: flex; align-items: center; justify-content: center;
-      border: 1px solid var(--border);
       overflow: hidden;
+      display: block;
     }
-    .welcome-img-placeholder::after {
-      content: '✝';
-      font-size: 5rem; opacity: 0.08; color: var(--gold);
+    .welcome-img-real img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      border-radius: 2px;
     }
     .welcome-accent-box {
       position: absolute; bottom: -24px; right: -24px;
@@ -519,13 +518,20 @@
       justify-content: space-between; gap: 40px;
       position: relative; overflow: hidden;
     }
-    .community-banner::before {
-      content: '♥';
-      position: absolute; right: 40px; top: 50%;
-      transform: translateY(-50%);
-      font-size: 8rem; opacity: 0.08;
-      color: var(--ink);
-      pointer-events: none;
+    .community-photo {
+      flex-shrink: 0;
+      width: 320px;
+      margin: -56px -60px -56px 0;
+      align-self: stretch;
+      overflow: hidden;
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .community-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    @media (max-width: 900px) {
+      .community-photo { display: none; }
     }
     .community-banner h2 {
       font-family: var(--font-display);
@@ -841,7 +847,9 @@
     <div class="container">
       <div class="welcome-grid">
         <div class="welcome-img-block reveal">
-          <div class="welcome-img-placeholder"></div>
+          <div class="welcome-img-real">
+            <img src="SCR-20260514-mqkg.png" alt="Sunday worship at Maranatha Baptist Church" />
+          </div>
           <div class="welcome-accent-box">
             <div class="num">20+</div>
             <div class="txt">Years of Community</div>
@@ -1051,6 +1059,9 @@
           <h2>Serving Jacksonville,<br />one third Saturday at a time.</h2>
           <p>We partner with Builders of the Faith for a monthly food drive — every third Saturday. Bring what you can, come as you are.</p>
           <a href="#contact" class="btn-dark" style="margin-top: 24px; display: inline-block;">Get Involved</a>
+        </div>
+        <div class="community-photo">
+          <img src="SCR-20260514-mqui.jpeg" alt="Community fellowship meal at Maranatha Baptist" />
         </div>
       </div>
     </div>
